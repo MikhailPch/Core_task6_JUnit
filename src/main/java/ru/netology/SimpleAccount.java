@@ -12,22 +12,21 @@ public class SimpleAccount extends Account {
         return true;
     }
 
-
     @Override
     public boolean pay(long amount) {
-        if (amount <= balance) {
+        if (balance >= amount) {
             balance -= amount;
             return true;
         } else {
             return false;
         }
-
     }
+
 
     @Override
     public boolean transfer(Account account, long amount) {
-        if (balance >= amount && account.add(amount)) {
-            return pay(amount);
+        if (pay(amount) && account.add(amount)) {
+            return true;
         } else {
             return false;
         }

@@ -2,7 +2,7 @@ package ru.netology;
 
 public class CreditAccount extends Account {
     public CreditAccount(long balance, int creditLimit) {
-       super(balance, creditLimit);
+        super(balance, creditLimit);
         this.balance = balance;
         this.creditLimit = creditLimit;
     }
@@ -29,8 +29,8 @@ public class CreditAccount extends Account {
 
     @Override
     public boolean transfer(Account account, long amount) {
-        if (amount <= (creditLimit - Math.abs(balance)) && account.add(amount)) {
-            return pay(amount);
+        if (pay(amount) && account.add(amount)) {
+            return true;
         } else {
             return false;
         }
